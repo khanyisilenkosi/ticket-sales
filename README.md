@@ -1,5 +1,9 @@
 Ticket Sales Inventory Simulator
-Video Demo: <URL HERE>
+
+
+Video Demo: <https://youtu.be/q11Ss3xxq-c>
+
+
 Description:
 
 The Ticket SalesInventory Simulator is a Python implementation of the classic Gilded Rose Kata problem. It models a fictional inn's inventory system where different categories of items degrade (or improve) in quality over time according to specific business rules.
