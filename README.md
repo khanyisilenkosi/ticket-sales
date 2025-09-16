@@ -1,62 +1,86 @@
 # Ticket Sales Inventory System
 
-## Project Description
-This project is an implementation of the **Ticket Sales**, a classic programming exercise used to practice refactoring and unit testing.  
-The program models an inn’s inventory system where items have two properties that change daily:  
-- **SellIn**: The number of days we have to sell the item.  
-- **Quality**: How valuable the item is.  
+Video Demo: <URL HERE>
+Description:
 
-Different types of items follow different rules when their quality and sell-in values are updated.
+The Ticket Sales Inventory Simulator is a Python implementation of the classic Gilded Rose Kata problem. It models a fictional inn's inventory system where different categories of items degrade (or improve) in quality over time according to specific business rules.
 
----
+This project was created as my CS50P final project, and it demonstrates my ability to design, implement, and test Python applications while applying good software design practices.
 
-## 🚀 What It Does
-- Automatically updates the `sell_in` and `quality` values of items each day.  
-- Handles special items like **Aged Brie**, **Sulfuras**, and **Backstage Passes** with unique behavior rules.  
-- Ensures that **quality never falls below 0** and **never exceeds 50** (except for Sulfuras which always has a fixed quality).  
+📌 Project Description
+What It Does
 
----
+Simulates the daily update of items in an inventory.
 
-## ⚙️ How It Works
-1. **Item objects** are created with a `name`, `sell_in`, and `quality`.  
-2. The **GildedRose class** accepts a list of items.  
-3. Each day, calling `update_quality()` applies the rules:  
-   - Normal items: `quality` decreases by 1 each day.  
-   - Once the sell-by date has passed, quality degrades twice as fast.  
-   - **Aged Brie**: Increases in quality as it gets older.  
-   - **Backstage passes**:  
-     - Increase in quality as the concert approaches.  
-     - Increase by 2 when `sell_in <= 10`.  
-     - Increase by 3 when `sell_in <= 5`.  
-     - Drop to 0 after the concert.  
-   - **Sulfuras**: Legendary item, never decreases in `sell_in` or `quality`.  
+Applies special business rules to different types of items:
 
----
+Normal items degrade in quality each day.
 
-## 🗂️ Files & Functions
-### `ticket_sales.py`
-- **`Item` class**:  
-  Represents an inventory item with attributes `name`, `sell_in`, and `quality`.  
+Aged Brie increases in quality over time.
 
-- **`GildedRose` class**:  
-  - `__init__(items)`: Initializes the inventory with a list of `Item` objects.  
-  - `update_quality()`: Applies all the rules to update each item’s `sell_in` and `quality`.  
+Backstage passes increase in quality as a concert approaches but drop to 0 after the event.
 
-### `test_ticket_sales.py`
-- Contains **pytest-based unit tests** to validate the rules for:  
-  - Normal items  
-  - Aged Brie  
-  - Sulfuras  
-  - Backstage Passes  
-  - Edge cases (quality bounds, sell_in after expiry, etc.)  
+Sulfuras is a legendary item and never changes.
 
----
+Conjured items degrade in quality twice as fast as normal items.
 
-## 🎨 Design Choices & Reasoning
-- **Explicit Rule-Based Updates**: The `update_quality()` function directly encodes each rule. This makes the behavior transparent for beginners but could later be refactored into separate strategy classes for scalability.  
-- **Item as a Data Holder**: The `Item` class is kept simple (no logic inside) to keep responsibilities separated.  
-- **Testing with pytest**: Pytest was chosen for simplicity and readability. Each rule has a clear, isolated test.  
-- **Maintainability First**: While the code follows the original kata structure, the test suite ensures safety for future refactors.  
+How It Works
+
+Each day, the program reduces the sell_in value (days left to sell).
+
+Depending on the item type, quality is adjusted according to the rules.
+
+The program can simulate any number of days and print the inventory state day by day.
+
+📂 Files
+
+ticket_sales.py
+Contains the core logic:
+
+Item class (represents an item with name, sell_in, and quality).
+
+GildedRose class (handles inventory updates based on rules).
+
+main.py
+Entry point for running the program. Uses argparse for command-line arguments to set the number of simulation days.
+
+test_ticket_sales.py
+Contains unit tests using pytest to validate the behavior of the core functions and rules.
+
+requirements.txt
+Lists required dependencies (in this case, mainly pytest).
+
+⚙️ Design Choices
+
+No changes to Item class: This was a deliberate design decision in line with the original kata restrictions.
+
+Single responsibility: GildedRose handles updating inventory, keeping logic centralized.
+
+Command-line flexibility: Added argparse to allow users to set simulation duration.
+
+Testing with pytest: Ensures reliability and correctness of business rules.
+
+▶️ Example Usage
+Run default 5-day simulation:
+python3 main.py
+
+Run custom 10-day simulation:
+python3 main.py -d 10
+
+Sample Output:
+-------- Day 0 --------
+Aged Brie, 2, 0
+Backstage passes to a TAFKAL80ETC concert, 15, 20
+Sulfuras, Hand of Ragnaros, 0, 80
+food, 5, 10
+Conjured Mana Cake, 3, 6
+
+-------- Day 1 --------
+Aged Brie, 1, 1
+Backstage passes to a TAFKAL80ETC concert, 14, 21
+Sulfuras, Hand of Ragnaros, 0, 80
+food, 4, 9
+Conjured Mana Cake, 2, 4 
 
 ---
 
