@@ -1,14 +1,15 @@
 Ticket Sales Inventory Simulator
-
+---
 
 Video Demo: <https://youtu.be/q11Ss3xxq-c>
-
+---
 
 Description:
 
 The Ticket SalesInventory Simulator is a Python implementation of the classic Gilded Rose Kata problem. It models a fictional inn's inventory system where different categories of items degrade (or improve) in quality over time according to specific business rules.
 
 This project was created as my CS50P final project, and it demonstrates my ability to design, implement, and test Python applications while applying good software design practices.
+---
 
 📌 Project Description
 What It Does
@@ -34,6 +35,7 @@ Each day, the program reduces the sell_in value (days left to sell).
 Depending on the item type, quality is adjusted according to the rules.
 
 The program can simulate any number of days and print the inventory state day by day.
+---
 
 📂 Files
 
@@ -52,6 +54,7 @@ Contains unit tests using pytest to validate the behavior of the core functions 
 
 requirements.txt
 Lists required dependencies (in this case, mainly pytest).
+---
 
 ⚙️ Design Choices
 
@@ -62,6 +65,7 @@ Single responsibility: GildedRose handles updating inventory, keeping logic cent
 Command-line flexibility: Added argparse to allow users to set simulation duration.
 
 Testing with pytest: Ensures reliability and correctness of business rules.
+---
 
 ▶️ Example Usage
 Run default 5-day simulation:
@@ -71,17 +75,29 @@ Run custom 10-day simulation:
 python3 main.py -d 10
 
 Sample Output:
+
 -------- Day 0 --------
+
 Aged Brie, 2, 0
+
 Backstage passes to a TAFKAL80ETC concert, 15, 20
+
 Sulfuras, Hand of Ragnaros, 0, 80
+
 food, 5, 10
+
 Conjured Mana Cake, 3, 6
 
+
 -------- Day 1 --------
+
 Aged Brie, 1, 1
+
 Backstage passes to a TAFKAL80ETC concert, 14, 21
+
 Sulfuras, Hand of Ragnaros, 0, 80
+
 food, 4, 9
+
 Conjured Mana Cake, 2, 4
 
